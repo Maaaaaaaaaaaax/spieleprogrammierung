@@ -1,4 +1,4 @@
-import pygame                   # Stellt Objekte und Konstanten zur Spielprogrammierung zur Verfügung
+import pygame
 import os
 import random
 
