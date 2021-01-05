@@ -83,7 +83,16 @@ class Enemy(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.left = random.randrange(48, 313)      # Gegner spawnen nur auf der Fahrbahn
         self.rect.bottom = random.randrange(-1000, 0)
-        self.speed = random.randrange(3, 5)
+        if Settings.score < 25:
+            self.speed = 2
+        if Settings.score >= 25 < 50:
+            self.speed = 3
+        if Settings.score >= 50 < 75:
+            self.speed = 4
+        if Settings.score >= 75 < 100:
+            self.speed = 5
+        if Settings.score >= 150:
+            self.speed = 6
 
 
     def update(self):
@@ -141,15 +150,15 @@ class Game(object):
                 self.all_racer.update()             # Update Funtion für die Steuerung
                 self.all_racer.draw(self.screen)
 
-                if Settings.score < 10:
+                if Settings.score < 25:
                     Settings.counter = 3
-                if Settings.score >= 10 < 15:
+                if Settings.score >= 25 < 50:
                     Settings.counter = 4
-                if Settings.score >= 15 < 20:
+                if Settings.score >= 50 < 75:
                     Settings.counter = 5
-                if Settings.score >= 20 < 25:
+                if Settings.score >= 75 < 100:
                     Settings.counter = 6
-                if Settings.score >= 25 < 30:
+                if Settings.score >= 150:
                     Settings.counter = 7
 
                 while Settings.enemys <= Settings.counter:
